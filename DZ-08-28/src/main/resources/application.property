@@ -1,0 +1,3 @@
+file.resource.template=/questions-answers_%s.csv
+basename=/i18n/bundle
+defaultencoding=UTF-8
