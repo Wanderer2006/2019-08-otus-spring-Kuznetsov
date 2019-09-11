@@ -8,14 +8,11 @@
         <property name="fileResource" value="/questions-answers.csv"/>
     </bean>
 
-    <bean id="drawQuestionService" class="ru.kusoft.service.DrawQuestionServiceImpl"/>
-
-    <bean id="inputAnswerService" class="ru.kusoft.service.InputAnswerServiceImpl"/>
+    <bean id="consoleService" class="ru.kusoft.service.ConsoleServiceImpl"/>
 
     <bean id="testingService" class="ru.kusoft.service.TestingServiceImpl">
         <constructor-arg name="questionsDao" ref="questionsDao"/>
-        <constructor-arg name="drawQuestionService" ref="drawQuestionService"/>
-        <constructor-arg name="inputAnswerService" ref="inputAnswerService"/>
+        <constructor-arg name="consoleService" ref="consoleService"/>
     </bean>
 
 
