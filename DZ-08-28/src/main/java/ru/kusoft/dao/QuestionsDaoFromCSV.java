@@ -1,5 +1,6 @@
 package ru.kusoft.dao;
 
+import lombok.RequiredArgsConstructor;
 import ru.kusoft.domain.Answer;
 import ru.kusoft.domain.Question;
 import ru.kusoft.exception.IllegalFormatCsvException;
@@ -9,17 +10,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 public class QuestionsDaoFromCSV implements QuestionsDao {
-    private String fileResource;
+    private final String fileResourceTemplate;
 
-    public void setFileResource(String fileResource) {
-        this.fileResource = fileResource;
-    }
+    public List<Question> loadQuestion(Locale locale) {
 
-    public List<Question> loadQuestion() {
-
+        String fileResource = String.format(fileResourceTemplate, locale.toString());
         InputStream stream = getClass().getResourceAsStream(fileResource);
         List<String> result = new BufferedReader(new InputStreamReader(stream)).lines()
                 .map(String::trim).collect(Collectors.toList());
