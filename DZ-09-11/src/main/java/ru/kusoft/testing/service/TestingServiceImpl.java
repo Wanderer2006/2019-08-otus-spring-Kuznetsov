@@ -23,7 +23,7 @@ public class TestingServiceImpl implements TestingService {
         Person person = personService.getPerson();
         List<Question> questions = questionsDao.loadQuestion(settings.getLocaleDefault());
         int sumPoint = TestingAndReturnSumPoint(questions);
-        personService.Congratulation(person, sumPoint);
+        personService.congratulation(person, sumPoint);
     }
 
     public int TestingAndReturnSumPoint(List<Question> questions) {

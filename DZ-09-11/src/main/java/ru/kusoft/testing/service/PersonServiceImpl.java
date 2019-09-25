@@ -17,7 +17,7 @@ public class PersonServiceImpl implements PersonService{
         return new Person(secondName, firstName);
     };
 
-    public void Congratulation(Person person, int sumPoint) {
+    public void congratulation(Person person, int sumPoint) {
         ioService.printlnLocal("congratulation.user", person.getSecondName(), person.getFirstName(), String.valueOf(sumPoint));
     }
 }
