@@ -1,0 +1,9 @@
+application:
+  file-resource-template: /questions-answers_%s.csv
+  base-name: /i18n/bundle
+  default-encoding: UTF-8
+  locale-default: ru_RU
+  languages:
+    ru_RU: Русский
+    en: English
+
