@@ -22,11 +22,11 @@ public class TestingServiceImpl implements TestingService {
         chooseLocaleService.setDefaultLocale();
         Person person = personService.getPerson();
         List<Question> questions = questionsDao.loadQuestion(settings.getLocaleDefault());
-        int sumPoint = TestingAndReturnSumPoint(questions);
+        int sumPoint = testingAndReturnSumPoint(questions);
         personService.congratulation(person, sumPoint);
     }
 
-    public int TestingAndReturnSumPoint(List<Question> questions) {
+    public int testingAndReturnSumPoint(List<Question> questions) {
         int sumPoint = 0;
         for (Question question: questions) {
             interactionService.drawQuestion(question);

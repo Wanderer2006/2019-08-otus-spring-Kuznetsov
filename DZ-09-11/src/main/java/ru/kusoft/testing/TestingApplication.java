@@ -11,7 +11,6 @@ import ru.kusoft.testing.service.TestingServiceImpl;
 @SpringBootApplication
 @RequiredArgsConstructor
 public class TestingApplication {
-	private final TestingService testingService;
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(TestingApplication.class, args);
