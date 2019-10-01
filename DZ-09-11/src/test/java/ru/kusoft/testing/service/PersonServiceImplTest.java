@@ -9,7 +9,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.kusoft.testing.domain.Person;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 
 @DisplayName("Метод сервиса PersonService должен ")
@@ -24,8 +23,8 @@ class PersonServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        given(ioService.inputStringLocal("user.secondname")).willReturn("Сидоров");
-        given(ioService.inputStringLocal("user.firstname")).willReturn("Иван");
+        given(ioService.inputStringLocale("user.secondname")).willReturn("Сидоров");
+        given(ioService.inputStringLocale("user.firstname")).willReturn("Иван");
     }
 
     @Test

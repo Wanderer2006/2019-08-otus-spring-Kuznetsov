@@ -36,7 +36,7 @@ public class IOServiceImpl implements IOService{
         ps.println();
     }
 
-    public void printLocal(String MessageKey, String... values) {
+    public void printLocale(String MessageKey, String... values) {
         List<String> valueList = new ArrayList<>();
         for (String value: values) {
             valueList.add(value);
@@ -51,8 +51,8 @@ public class IOServiceImpl implements IOService{
         );
     }
 
-    public void printlnLocal(String MessageKey, String... values) {
-        printLocal(MessageKey, values);
+    public void printlnLocale(String MessageKey, String... values) {
+        printLocale(MessageKey, values);
         ps.println();
     }
 
@@ -60,8 +60,8 @@ public class IOServiceImpl implements IOService{
         return sc.next();
     }
 
-    public String inputStringLocal(String promptMessageKey) {
-        printLocal(promptMessageKey);
+    public String inputStringLocale(String promptMessageKey) {
+        printLocale(promptMessageKey);
         return sc.next();
     }
 

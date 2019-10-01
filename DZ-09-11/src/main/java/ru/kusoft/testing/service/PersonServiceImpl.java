@@ -10,14 +10,14 @@ public class PersonServiceImpl implements PersonService{
     private final IOService ioService;
 
     public Person getPerson() {
-        ioService.printlnLocal("hello.user");
-        String secondName = ioService.inputStringLocal("user.secondname");
-        String firstName = ioService.inputStringLocal("user.firstname");
+        ioService.printlnLocale("hello.user");
+        String secondName = ioService.inputStringLocale("user.secondname");
+        String firstName = ioService.inputStringLocale("user.firstname");
         ioService.print("\n");
         return new Person(secondName, firstName);
     };
 
     public void congratulation(Person person, int sumPoint) {
-        ioService.printlnLocal("congratulation.user", person.getSecondName(), person.getFirstName(), String.valueOf(sumPoint));
+        ioService.printlnLocale("congratulation.user", person.getSecondName(), person.getFirstName(), String.valueOf(sumPoint));
     }
 }

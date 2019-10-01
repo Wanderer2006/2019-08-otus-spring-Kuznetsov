@@ -6,13 +6,13 @@ public interface IOService {
 
     void println(String formatStr, String... values);
 
-    void printLocal(String MessageKey, String... values);
+    void printLocale(String MessageKey, String... values);
 
-    void printlnLocal(String MessageKey, String... values);
+    void printlnLocale(String MessageKey, String... values);
 
     String inputString();
 
-    String inputStringLocal(String promptMessageKey);
+    String inputStringLocale(String promptMessageKey);
 
     int inputInt();
 
