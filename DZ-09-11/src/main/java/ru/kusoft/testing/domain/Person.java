@@ -1,11 +1,13 @@
 package ru.kusoft.testing.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person {
-    private final String firstName;
-    private final String secondName;
+    private String firstName;
+    private String secondName;
 }

@@ -10,6 +10,10 @@ public interface IOService {
 
     void printlnLocale(String MessageKey, String... values);
 
+    String getBundleMessage(String messageKey);
+
+    String getBundleMessage(String messageKey, Object[] objects);
+
     String inputString();
 
     String inputStringLocale(String promptMessageKey);

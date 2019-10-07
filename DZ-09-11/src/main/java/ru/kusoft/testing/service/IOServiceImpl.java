@@ -36,18 +36,24 @@ public class IOServiceImpl implements IOService{
         ps.println();
     }
 
-    public void printLocale(String MessageKey, String... values) {
+    public void printLocale(String messageKey, String... values) {
         List<String> valueList = new ArrayList<>();
         for (String value: values) {
             valueList.add(value);
         }
 
-        ps.print(
-                messageSource.getMessage(
-                        MessageKey,
-                        valueList.toArray(),
-                        settings.getLocaleDefault()
-                )
+        ps.print(getBundleMessage(messageKey, valueList.toArray()));
+    }
+
+    public String getBundleMessage(String messageKey) {
+        return getBundleMessage(messageKey, null);
+    }
+
+    public String getBundleMessage(String messageKey, Object[] objects) {
+        return messageSource.getMessage(
+                messageKey,
+                objects,
+                settings.getLocaleDefault()
         );
     }
 
