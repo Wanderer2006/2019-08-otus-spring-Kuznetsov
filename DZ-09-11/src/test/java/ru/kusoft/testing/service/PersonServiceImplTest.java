@@ -7,13 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import ru.kusoft.testing.domain.Person;
 import ru.kusoft.testing.events.InitUserEvent;
+import ru.kusoft.testing.events.TestingApplicationEventListener;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Метод сервиса PersonService должен ")
-@SpringBootTest(classes = PersonServiceImpl.class)
+@SpringBootTest
 class PersonServiceImplTest {
 
     @MockBean

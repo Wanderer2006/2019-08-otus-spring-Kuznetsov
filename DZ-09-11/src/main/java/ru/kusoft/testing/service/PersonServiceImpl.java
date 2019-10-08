@@ -2,12 +2,9 @@ package ru.kusoft.testing.service;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import ru.kusoft.testing.domain.Person;
 import ru.kusoft.testing.domain.Question;
-import ru.kusoft.testing.events.InitUserEvent;
-import ru.kusoft.testing.events.ShowResultEvent;
 
 import java.util.List;
 
@@ -26,17 +23,6 @@ public class PersonServiceImpl implements PersonService {
         this.interactionService = interactionService;
         person = new Person();
         sumPoint = 0;
-    }
-
-    @EventListener
-    public void onInitUserEvent(InitUserEvent initUserEvent) {
-        person.setFirstName(initUserEvent.getPerson().getFirstName());
-        person.setSecondName(initUserEvent.getPerson().getSecondName());
-    }
-
-    @EventListener
-    public void onShowResultEvent(ShowResultEvent showResultEvent) {
-        congratulation();
     }
 
     public void testingAndCalculateSumPoint(List<Question> questions) {

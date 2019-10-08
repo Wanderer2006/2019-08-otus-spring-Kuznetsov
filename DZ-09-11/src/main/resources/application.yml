@@ -12,3 +12,7 @@ application:
   languages:
     ru_RU: Русский
     en: English
+
+logging:
+  level:
+    root: ERROR

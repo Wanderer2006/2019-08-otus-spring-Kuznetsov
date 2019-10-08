@@ -1,21 +1,14 @@
 package ru.kusoft.testing.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 import ru.kusoft.testing.config.ApplicationSettings;
-import ru.kusoft.testing.events.ChooseLocaleEvent;
 
 @Service
 @RequiredArgsConstructor
-public class ChooseLocaleServiceImpl implements ChooseLocaleService, ApplicationListener<ChooseLocaleEvent> {
+public class ChooseLocaleServiceImpl implements ChooseLocaleService {
     private final IOService ioService;
     private final ApplicationSettings settings;
-
-    @Override
-    public void onApplicationEvent(ChooseLocaleEvent chooseLocaleEvent) {
-        setDefaultLocale();
-    }
 
     public void setDefaultLocale() {
         ioService.printlnLocale("choose.language");
