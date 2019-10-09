@@ -25,6 +25,11 @@ public class PersonServiceImpl implements PersonService {
         sumPoint = 0;
     }
 
+    public void updatePerson(Person person) {
+        this.person.setFirstName(person.getFirstName());
+        this.person.setSecondName(person.getSecondName());
+    }
+
     public void testingAndCalculateSumPoint(List<Question> questions) {
         for (Question question: questions) {
             interactionService.drawQuestion(question);

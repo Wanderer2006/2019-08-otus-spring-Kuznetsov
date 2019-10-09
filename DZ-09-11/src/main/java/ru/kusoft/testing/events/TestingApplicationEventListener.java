@@ -21,8 +21,7 @@ public class TestingApplicationEventListener {
 
     @EventListener
     public void onInitUserEvent(InitUserEvent initUserEvent) {
-        personService.getPerson().setFirstName(initUserEvent.getPerson().getFirstName());
-        personService.getPerson().setSecondName(initUserEvent.getPerson().getSecondName());
+        personService.updatePerson(initUserEvent.getPerson());
     }
 
     @EventListener

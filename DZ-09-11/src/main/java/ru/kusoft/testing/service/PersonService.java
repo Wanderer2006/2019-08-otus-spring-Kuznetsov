@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PersonService {
 
+    void updatePerson(Person person);
     void testingAndCalculateSumPoint(List<Question> questions);
     void congratulation();
     Person getPerson();
