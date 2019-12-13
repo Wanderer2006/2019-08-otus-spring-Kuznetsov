@@ -1,23 +1,46 @@
 package ru.kusoft.testing.service;
 
-import lombok.RequiredArgsConstructor;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.kusoft.testing.domain.Person;
+import ru.kusoft.testing.domain.Question;
+
+import java.util.List;
 
 @Service
-@RequiredArgsConstructor
-public class PersonServiceImpl implements PersonService{
+@Data
+public class PersonServiceImpl implements PersonService {
+    private Person person;
+    private Integer sumPoint;
+
     private final IOService ioService;
+    private final InteractionService interactionService;
 
-    public Person getPerson() {
-        ioService.printlnLocal("hello.user");
-        String secondName = ioService.inputStringLocal("user.secondname");
-        String firstName = ioService.inputStringLocal("user.firstname");
-        ioService.print("\n");
-        return new Person(secondName, firstName);
-    };
+    @Autowired
+    public PersonServiceImpl(IOService ioService, InteractionService interactionService) {
+        this.ioService = ioService;
+        this.interactionService = interactionService;
+        person = new Person();
+        sumPoint = 0;
+    }
 
-    public void congratulation(Person person, int sumPoint) {
-        ioService.printlnLocal("congratulation.user", person.getSecondName(), person.getFirstName(), String.valueOf(sumPoint));
+    public void updatePerson(Person person) {
+        this.person.setFirstName(person.getFirstName());
+        this.person.setSecondName(person.getSecondName());
+    }
+
+    public void testingAndCalculateSumPoint(List<Question> questions) {
+        for (Question question: questions) {
+            interactionService.drawQuestion(question);
+            if (question.getCountAnswers() > 0) {
+                int numberAnswer = interactionService.inputNumberAnswer(question.getAnswers().size());
+                sumPoint += question.getPointAnswer(numberAnswer);
+            }
+        }
+    }
+
+    public void congratulation() {
+        ioService.printlnLocale("congratulation.user", person.getSecondName(), person.getFirstName(), String.valueOf(sumPoint));
     }
 }

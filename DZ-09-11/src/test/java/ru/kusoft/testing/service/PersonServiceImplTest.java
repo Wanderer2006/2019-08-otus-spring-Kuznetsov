@@ -6,30 +6,38 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import ru.kusoft.testing.domain.Person;
+import ru.kusoft.testing.events.InitUserEvent;
+import ru.kusoft.testing.events.TestingApplicationEventListener;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.given;
 
 @DisplayName("Метод сервиса PersonService должен ")
-@SpringBootTest(classes = PersonServiceImpl.class)
+@SpringBootTest
 class PersonServiceImplTest {
 
     @MockBean
     private IOService ioService;
+
+    @MockBean
+    private InteractionService interactionService;
+
+    @Autowired
+    private ApplicationEventPublisher publisher;
 
     @Autowired
     private PersonService personService;
 
     @BeforeEach
     void setUp() {
-        given(ioService.inputStringLocal("user.secondname")).willReturn("Сидоров");
-        given(ioService.inputStringLocal("user.firstname")).willReturn("Иван");
+        publisher.publishEvent(new InitUserEvent(this, new Person("Сидоров", "Иван")));
     }
 
     @Test
-    @DisplayName("возвращать корректный объект Person")
+    @DisplayName("корректно инициализировать объект Person")
     void getPerson() {
         Person expectedPerson = new Person("Сидоров", "Иван");
         Person actualPerson = personService.getPerson();

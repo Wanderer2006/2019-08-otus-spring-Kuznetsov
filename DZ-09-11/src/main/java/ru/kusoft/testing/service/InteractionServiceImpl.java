@@ -14,14 +14,14 @@ public class InteractionServiceImpl implements InteractionService {
 
     public void drawQuestion(Question question) {
         if (Objects.nonNull(question)) {
-            ioService.printlnLocal("question", question.getQuestion());
+            ioService.printlnLocale("question", question.getQuestion());
             if (Objects.nonNull(question.getAnswers())) {
-                ioService.printlnLocal("answers.variant");
+                ioService.printlnLocale("answers.variant");
                 int index = 0;
                 for (Answer answer: question.getAnswers()) {
-                    ioService.printlnLocal("answer", String.valueOf(++index), answer.getAnswer());
+                    ioService.printlnLocale("answer", String.valueOf(++index), answer.getAnswer());
                 }
-                ioService.printLocal("answers.numbers", String.valueOf(question.getAnswers().size()));
+                ioService.printLocale("answers.numbers", String.valueOf(question.getAnswers().size()));
             }
         }
     }
@@ -34,7 +34,7 @@ public class InteractionServiceImpl implements InteractionService {
             if (number > 0 && number <= countAnswer) {
                 validValue = true;
             } else {
-                ioService.printLocal("answer.wrong", String.valueOf(countAnswer));
+                ioService.printLocale("answer.wrong", String.valueOf(countAnswer));
             }
         }
         while (!validValue);
